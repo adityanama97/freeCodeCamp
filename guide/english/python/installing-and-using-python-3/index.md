@@ -1,67 +1,61 @@
 ---
 title: Installing and Using Python 3
 ---
+To get started working with Python 3, you’ll need to have access to the Python interpreter. There are several common ways to accomplish this:
 
-## Installing Python 3
-You can download Python from this official <a href='https://www.python.org/downloads/' target='_blank' rel='nofollow'>link</a>. Based on your OS (Windows or Linux or OSX), you might want to install Python 3 following <a href='http://docs.python-guide.org/en/latest/starting/installation/' target='_blank' rel='nofollow'>these instructions</a>.
+* Python can be obtained from the Python Software Foundation website at python.org. Typically, that involves downloading the appropriate installer for your operating system and running it on your machine.
+* Some operating systems, notably Linux, provide a package manager that can be run to install Python.
+* On macOS, the best way to install Python 3 involves installing a package manager called Homebrew. You’ll see how to do this in the relevant section in the tutorial.
+* On mobile operating systems like Android and iOS, you can install apps that provide a Python programming environment. This can be a great way to practice your coding skills on the go.
 
-## Using Virtual Environments
-It is always a great idea to <a href='https://en.wikipedia.org/wiki/Sandbox_(computer_security)' target='_blank' rel='nofollow'>sandbox</a> your Python installation; and keeping it separate from your _System Python_. The _System Python_ is the path to Python interpreter, which is used by other modules installed along with your OS.
+Alternatively, there are several websites that allow you to access a Python interpreter online without installing anything on your computer at all.
 
-It's **not safe** to install Python Web-frameworks or libraries directly using _System Python_. Instead, you can use <a href='https://virtualenv.readthedocs.org/en/latest/' target='_blank' rel='nofollow'>Virtualenv</a> to create and spawn a separate Python process when you are developing Python applications.
+---
+Step 1: Download the Python 3 Installer
+---
+* Open a browser window and navigate to the Download page for Windows at python.org.
+* Underneath the heading at the top that says Python Releases for Windows, click on the link for the Latest Python 3 Release - Python 3.x.x. (As of this writing, the latest is Python 3.6.5.)
+* Scroll to the bottom and select either Windows x86-64 executable installer for 64-bit or Windows x86 executable installer for 32-bit.
 
-### Virtualenvwrapper
-The <a href='https://virtualenvwrapper.readthedocs.org/en/latest/' target='_blank' rel='nofollow'>Virtualenvwrapper module</a> makes it easy for you to manage and sandbox multiple Python sandboxed environments in one machine; without corrupting any modules or services written in Python and used by your machine.
+---
+Step 2: Run the Installer
+---
+Once you have chosen and downloaded an installer, simply run it by double-clicking on the downloaded file. A dialog should appear that looks something like this:
 
-Of course, most cloud hosted development environment such as <a href='https://www.nitrous.io/' target='_blank' rel='nofollow'>Nitrous</a> or <a href='https://c9.io/' target='_blank' rel='nofollow'>Cloud9</a> also comes with these pre-installed and ready for you to get coding! You can quickly pick a box from your dashboard, and start coding after activating a Python 3 environment.
+Important: You want to be sure to check the box that says Add Python 3.x to PATH as shown to ensure that the interpreter will be placed in your execution path.
 
-In <a href='https://c9.io/' target='_blank' rel='nofollow'>Cloud9</a>, you need to select the Django box while creating a new development environment.
+Then just click Install Now. That should be all there is to it. A few minutes later you should have a working Python 3 installation on your system.
 
-A few shell command examples would follow. If you wish to copy-paste, do note that the `$` sign is a shorthand for the terminal prompt, it's not part of the command. My terminal prompt looks something like this:
+Linux
+---
+There is a very good chance your Linux distribution has Python installed already, but it probably won’t be the latest version, and it may be Python 2 instead of Python 3.
 
-    alayek:~/workspace (master) $
+To find out what version(s) you have, open a terminal window and try the following commands:
 
-And, an `ls` would look like
+python --version
+python2 --version
+python3 --version
 
-    alayek:~/workspace (master) $ ls
+If the version shown is Python 2.x.x or a version of Python 3 that is not the latest (3.6.5 as of this writing), then you will want to install the latest version. The procedure for doing this will depend on the Linux distribution you are running.
 
-But, while writing the same in this documentation, I would be writing it as
+Android (Phones & Tablets)
+---
+If you have an Android tablet or phone and want to practice Python on the go, there are a several options available. The one that we found most reliably supports Python 3.6 is Pydroid 3.
 
-    $ ls
+Pydroid 3 features an interpreter you can use for REPL sessions, and it also provides the ability to edit, save, and execute Python code:
 
-Getting back to our discussion, you can create a Python 3 interpreter-included sandbox on Cloud9 by running on your cloud terminal:
+Pydroid 3 editor
+---
+You can download and install Pydroid 3 from the Google Play store. There is a free version and also a paid Premium version which supports code prediction and code analysis.
 
-    $ mkvirtualenv py3 --python=/usr/bin/python3
+Online Python Interpreters
+---
+If you want to try out the examples in this tutorial without installing Python on your machine, there are several web sites available where you can interact with a Python interpreter online:
 
-You have to run it only once after creating a new box for your project. Once executed, this command would create a new sandboxed virtualenv ready for you to use, named `py3`.
+Python.org Online Console: www.python.org/shell
+Python Fiddle: pythonfiddle.com
+Repl.it: repl.it
+Trinket: trinket.io
+Python Anywhere: www.pythonanywhere.com
 
-To view available virtual environments, you can use
-
-    $ workon
-
-To activate `py3`, you can use the `workon` command with the name of the environment:
-
-    $ workon py3
-
-All three terminal commands above would also work on local Linux machines or OSX machines. These are <a href='https://virtualenvwrapper.readthedocs.org/en/latest/#introduction' target='_blank' rel='nofollow'>virtualenvwrapper</a> commands; so if you are planning on using them, make sure you have this module installed and added to `PATH` variable.
-
-If you are inside a virtual environment; you can easily find that out by checking your terminal prompt. The environment name would be clearly shown in your terminal prompt.
-
-For instance, when I am inside the `py3` environment; I would be seeing this as my terminal prompt:
-
-    (py3)alayek:~/workspace (master) $
-
-Notice the `(py3)` in braces! If for some reason, you are not seeing this, even if you are inside a virtual env; you can try doing one of the things <a href='http://stackoverflow.com/questions/1871549/python-determine-if-running-inside-virtualenv' target='_blank' rel='nofollow'>mentioned here</a>.
-
-To get out of a virtual environment; or to deactivate one - use the command
-
-    $ deactivate
-
-Again, this works only with virtualenvwrapper module.
-
-### Pipenv
-
-An alternative to using virtualenvwrapper is [Pipenv](https://docs.pipenv.org/). It automatically creates virtual environments for your projects, and maintains a `Pipfile` which contains the dependencies. Using Pipenv means you no longer need to use pip and virtualenv separately, or manage your own `requirements.txt` file. For those familiar with JavaScript, Pipenv is similar to using a packaging tool like `npm`.
-
-To get started with Pipenv, you can follow this very detailed [guide](https://docs.pipenv.org/install.html#installing-pipenv). Pipenv makes it easy to [specify which version of Python](https://docs.pipenv.org/basics.html#specifying-versions-of-python) you wish to use for each project, [import](https://docs.pipenv.org/basics.html#importing-from-requirements-txt) from an existing `requirements.txt` file and [graph](https://docs.pipenv.org/#pipenv-graph) your dependencies.
-
+These cloud-based Python interpreters may not be able to execute some of the more complex examples in this tutorial, but they will be adequate for running most of the simpler ones and may be a nice way to get you started. More information on using these sites is presented in the next section.
